@@ -3,7 +3,7 @@
 
 # k8s-cronjob-python-helloworld
 
-Taking the simple python hello world script further. This example creates a docker container containing a python hello world script thar prints "Hello World!" which gets deployed as a Cronjob to a kubernetes cluster using helm.
+Taking the simple python hello world script further. This example creates a docker container containing a python hello world script thar prints "Hello World!" which gets deployed as a CronJob to a kubernetes cluster using helm.
 
 To learn more about CronJobs click [here](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/).
 
@@ -77,10 +77,6 @@ spec:
           containers:
           - name: {{ .Chart.Name }}
             image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-            args:
-            - /bin/sh
-            - -c
-            - date; echo Hello from the Kubernetes cluster
           restartPolicy: OnFailure
 ```
 
@@ -117,9 +113,9 @@ To install the CronJob  using kubernetes run the following command:
 
 `helm install --name python-helloworld -f ./python-helloworld/values.yaml ./python-helloworld/ --tiller-namespace default`
 
-Alternatively you can also use upgrade command with the `--install` flag:
-
 ![terminal-helm-install](images/terminal-helm-install.png)
+
+Alternatively you can also use upgrade command with the `--install` flag:
 
 `helm upgrade python-helloworld ./python-helloworld/ -f ./python-helloworld/values.yaml --install --tiller-namespace default`
 
@@ -128,7 +124,7 @@ Alternatively you can also use upgrade command with the `--install` flag:
 ### Verify that the CronJob is installed
 
 Verify that the CronJob is installed properly using `helm` using the command 
-` helm list --tiller-namespace defaut`
+`helm list --tiller-namespace defaut`
 ![terminal-helm-list](images/terminal-helm-list.png)
 
 Now using the `kubectl` command `kubectl get pods --all-namespaces`

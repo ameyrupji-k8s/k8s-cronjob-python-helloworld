@@ -14,8 +14,4 @@ spec:
           containers:
           - name: {{ .Chart.Name }}
             image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-            args:
-            - /bin/sh
-            - -c
-            - date; echo Hello from the Kubernetes cluster
           restartPolicy: OnFailure
