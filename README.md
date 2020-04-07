@@ -161,7 +161,7 @@ To verify if that CronJob ran successfully run `kubectl get pods --all-namespace
 
 ## Cleanup
 
-To delete the container that was created use this command: `docker rm {container_id}`
+To delete the container that was created use this command: `helm delete --purge python-helloworld --tiller-namespace default`
 
 ![terminal-helm-delete](images/terminal-helm-delete.png)
 
